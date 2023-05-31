@@ -18,8 +18,9 @@ public class ShootPoint : MonoBehaviour
     }
     private void Shoot()
     {
+        var isWin = GameController.isGameWin;
         interval-=Time.deltaTime;
-        if (CheckClick())
+        if (CheckClick()&&!isWin)
         {
             interval = timerToDecrese;
         var clone= Instantiate(bullet,this.transform.position,transform.rotation);

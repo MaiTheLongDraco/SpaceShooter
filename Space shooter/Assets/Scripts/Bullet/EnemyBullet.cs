@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyBullet : BulletControl
 {
+    [SerializeField] private AudioSource source;
+    [SerializeField] private AudioClip collide;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class EnemyBullet : BulletControl
         if(coll.CompareTag("Player"))
         {
             coll.GetComponent<PlayerHeath>().Damage();
+            source.PlayOneShot(collide);
         }    
     }
 }

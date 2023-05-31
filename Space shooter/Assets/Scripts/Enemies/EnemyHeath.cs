@@ -5,12 +5,13 @@ using UnityEngine;
 public class EnemyHeath : Health
 {
     [SerializeField] private float health;
+    
     // Start is called before the first frame update
     void Start()
     {
         health = 10f;
+        GameController.EnemyLiving++;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -22,6 +23,7 @@ public class EnemyHeath : Health
         {
          base.explosionPrefab = Resources.Load<GameObject>("Explosion");
          base.OnDeath();
+            GameController.EnemyLiving--;
         }    
     }
     private void OnTriggerEnter2D(Collider2D col)
@@ -30,5 +32,9 @@ public class EnemyHeath : Health
         {
             health--;
         }
+    }
+    private new void OnDeath()
+    {
+        base.OnDeath();
     }
 }

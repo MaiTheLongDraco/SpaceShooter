@@ -138,6 +138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  source: {fileID: 5600179794273653749}
+  collide: {fileID: 8300000, guid: c39733d2eb45249e5ab9260bf481573d, type: 3}
 --- !u!82 &5600179794273653749
 AudioSource:
   m_ObjectHideFlags: 0
@@ -150,13 +152,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cafd08d954b388d4b916be4418d3dd09, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.562
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 164
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerHeath : Health
 {
     [SerializeField] private float health;
+    [SerializeField] private GameObject LoseCanvas;
     // Start is called before the first frame update
     void Start()
     {
-      
+        turnOffGameOver();
     }
 
     // Update is called once per frame
@@ -22,6 +24,8 @@ public class PlayerHeath : Health
         {
             base.explosionPrefab = Resources.Load<GameObject>("Explosion");
             base.OnDeath();
+            base.deadEvent.AddListener(showGameOver);
+            base.deadEvent?.Invoke();
         }
     }
     private void OnTriggerEnter2D(Collider2D col)
@@ -38,5 +42,14 @@ public class PlayerHeath : Health
     public void setHeath(int newHeath)
     {
         health=newHeath;
-    }    
+    }   
+    public void showGameOver()
+    {
+        LoseCanvas.SetActive(true);
+        return;
+    }
+    public void turnOffGameOver()
+    {
+        LoseCanvas.SetActive(false);
+    }
 }

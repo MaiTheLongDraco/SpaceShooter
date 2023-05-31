@@ -28,7 +28,7 @@ public class BulletControl : MonoBehaviour
     protected IEnumerator DestroySeff()
     {
         Destroy(gameObject,2f);
-        Debug.Log("destroy bullet");
+        //Debug.Log("destroy bullet");
         yield return new WaitForSeconds(5f);
     }
    

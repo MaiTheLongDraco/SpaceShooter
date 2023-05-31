@@ -22,7 +22,7 @@ public class VisualPlayer : MonoBehaviour
     void Update()
     {
         blink();
-        ControlPlayerInCamera();
+        HandleOnWinOrLose();
     }
     void blink()
     {
@@ -32,7 +32,7 @@ public class VisualPlayer : MonoBehaviour
     {
         var screen=Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
         minX = -screen.x+ positiveScale;
-        maxX = screen.x- 3f;
+        maxX = screen.x- 1f;
         minY = -screen.y+ positiveScale;
         maxY = screen.y- negativeScale;
     }
@@ -54,5 +54,17 @@ public class VisualPlayer : MonoBehaviour
             seftTranform.y = maxY;
         }
         GetComponentInParent<PlayerControl>().gameObject.transform.position = seftTranform;
-    }    
+    }
+    private void HandleOnWinOrLose()
+    {
+        var isWin = GameController.isGameWin;
+        if (isWin)
+        {
+            return;
+        }
+        else
+        {
+            ControlPlayerInCamera();
+        }
+    }
 }
