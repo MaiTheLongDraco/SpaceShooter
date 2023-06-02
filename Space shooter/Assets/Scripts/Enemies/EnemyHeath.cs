@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHeath : Health
 {
     [SerializeField] private float health;
-    
+    [SerializeField] Image heathBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,8 @@ public class EnemyHeath : Health
     }
     private void CheckIfDeath()
     {
-        if(health<=0)
+        SetHeathBar();
+        if (health<=0)
         {
          base.explosionPrefab = Resources.Load<GameObject>("Explosion");
          base.OnDeath();
@@ -33,8 +35,9 @@ public class EnemyHeath : Health
             health--;
         }
     }
-    private new void OnDeath()
+    private void SetHeathBar()
     {
-        base.OnDeath();
+        heathBar.fillAmount = health / 10f;
     }
+
 }

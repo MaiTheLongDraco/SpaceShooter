@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class PlayerHeath : Health
 {
-    [SerializeField] private float health;
+    [SerializeField] private Image _image;
+    [SerializeField] private Sprite[] sprite;
+    [SerializeField] private int health;
     [SerializeField] private GameObject LoseCanvas;
     // Start is called before the first frame update
     void Start()
     {
         turnOffGameOver();
+        setLife(sprite[health]);
+       // setLife(sprite[health]);
     }
 
     // Update is called once per frame
@@ -38,7 +43,8 @@ public class PlayerHeath : Health
     public void Damage()
     {
         health--;
-    }    
+        setLife(sprite[health]);
+    }
     public void setHeath(int newHeath)
     {
         health=newHeath;
@@ -52,4 +58,8 @@ public class PlayerHeath : Health
     {
         LoseCanvas.SetActive(false);
     }
+    public void setLife(Sprite newSprite)
+    {
+        _image.sprite = newSprite;
+    }    
 }

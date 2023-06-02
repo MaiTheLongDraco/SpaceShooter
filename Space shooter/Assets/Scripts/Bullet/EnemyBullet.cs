@@ -28,6 +28,7 @@ public class EnemyBullet : BulletControl
         {
             coll.GetComponent<PlayerHeath>().Damage();
             source.PlayOneShot(collide);
+            Destroy(this.gameObject,0.2f);
         }    
     }
 }
