@@ -10,7 +10,7 @@ public class WayPath : MonoBehaviour
     // Start is called before the first frame update
     void Awake ()
     {
-        StartCoroutine(CreateEnemy());
+       // StartCoroutine(CreateEnemy());
         points = GetComponentsInChildren<WayPoint>();
     }
 

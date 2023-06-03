@@ -5,16 +5,21 @@ using UnityEngine;
 
 public class FollowWayPath : MonoBehaviour
 {
-    private WayPath wayPath;
+    public WayPath wayPath;
+    private EnemyInfo enemyInfo;
     [SerializeField] private float followSpeed;
     private int index;
+
+    public WayPath WayPath { get => wayPath; set => wayPath = value; }
+    public float FollowSpeed { get => followSpeed; set => followSpeed = value; }
+
     // Start is called before the first frame update
     void Start()
     {
         index = 0;
         wayPath =FindObjectOfType<WayPath>();
         transform.position = wayPath.points[0].transform.position;
-        Debug.Log(Vector3.down + "Vector3.down");
+       // Debug.Log(Vector3.down + "Vector3.down");
     }
 
     // Update is called once per frame
@@ -50,7 +55,7 @@ public class FollowWayPath : MonoBehaviour
             return;
         else 
         {
-        Debug.Log(angle + "angle");
+        //Debug.Log(angle + "angle");
         transform.rotation=Quaternion.Euler(0,0,angle);
         } 
 
